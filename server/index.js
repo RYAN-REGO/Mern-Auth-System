@@ -4,6 +4,8 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
+//Routes
+import userRoutes from './routes/users.js';
 
 const app = express();
 dotenv.config();
@@ -11,6 +13,8 @@ dotenv.config();
 app.use(bodyParser.json({limit : "30mb", extended : true}));
 app.use(bodyParser.urlencoded({limit : "30mb", extended : true}));
 app.use(cors());
+
+app.use('/user', userRoutes);
 
 const CONNECTION_URL = process.env.MONGODB_URL;
 const PORT = process.env.PORT || 5000;
